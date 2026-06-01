@@ -1,0 +1,21 @@
+1. Open Terminal and go to your folder
+bashcd ~/Downloads
+2. Activate the virtual environment
+bashsource venv/bin/activate
+Your prompt will change to show (venv) — that means it's active.
+3. Edit your hostnames file
+bashnano hostnames.txt
+One hostname per line, # to comment out a line. Ctrl+O → Enter to save, Ctrl+X to exit.
+4. Dry run first — see what would be deleted without touching anything
+bashpython delete_zabbix_hosts.py -f hostnames.txt -n firstname.lastname --dry-run
+5. Run the actual delete
+bashpython delete_zabbix_hosts.py -f hostnames.txt -n firstname.lastname --workers 3
+6. When done, deactivate the environment
+bashdeactivate
+
+Optional flags to remember:
+FlagWhat it does--workers 33 parallel deletes at a time (safe for slow servers)--timeout 300Wait up to 300s per delete before giving up--dry-runPreview only, no deletes-n firstname.lastnameYour Zabbix username
+
+If you get a password prompt every time and want to avoid it, run this once:
+bashpython -c "import keyring; keyring.set_password('zabbix', 'firstname.lastname', 'yourpassword')"
+After that, the script pulls your password from the macOS keychain automatically
