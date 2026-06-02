@@ -14,7 +14,9 @@ bashpython delete_zabbix_hosts.py -f hostnames.txt -n firstname.lastname --worke
 bashdeactivate
 
 Optional flags to remember:
-FlagWhat it does--workers 33 parallel deletes at a time (safe for slow servers)--timeout 300Wait up to 300s per delete before giving up--dry-runPreview only, no deletes-n firstname.lastnameYour Zabbix username
+FlagWhat it does
+--workers 33 parallel deletes at a time (safe for slow servers)
+--timeout 300 Wait up to 300s per delete before giving up--dry-runPreview only, no deletes-n firstname.lastnameYour Zabbix username
 
 If you get a password prompt every time and want to avoid it, run this once:
 bashpython -c "import keyring; keyring.set_password('zabbix', 'firstname.lastname', 'yourpassword')"
